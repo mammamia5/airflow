@@ -39,7 +39,9 @@ def save_kafka_to_parquet(ds_nodash):
 
     if messages:
         df = pd.DataFrame(messages)
-        file_name = f"~/data/chat_data/{ds_nodash}.parquet"
+        file_ = f"~/data/chat_data/{ds_nodash}.parquet"
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        file_ = f"~/data/chat_data/{ds_nodash}.parquet"
         df.to_parquet(file_name, index=False)
         print(f"Parquet 파일로 저장 완료: {file_name}")
         return True
@@ -50,7 +52,7 @@ def air_alarm():
             value_serializer=lambda x: dumps(x).encode('utf-8')
         )
         data = {
-            'sender': '김원준',  # 사용자 이름을 입력하고 시작하는 식으로 고칠까
+            'sender': '*공지*',  # 사용자 이름을 입력하고 시작하는 식으로 고칠까
             'message': 'Airflow 작업이 완료되었습니다.',
             'time': datetime.today().strftime("%Y-%m-%d %H:%M:%S")
         }
