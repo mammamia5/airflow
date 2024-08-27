@@ -28,7 +28,7 @@ with DAG(
         'retry_delay': timedelta(seconds=3),
     },
     description='hello world DAG',
-    schedule="0 16 * * *", # 매일 오전 9시 20분 한국 시간에 실행
+    schedule="20 9 * * *", # 매일 오전 9시 20분 한국 시간에 실행
     #schedule_interval="@hourly",
     #timezone=KST,
     #start_date=datetime(2024, 8, 26),
