@@ -12,7 +12,7 @@
 - Apache Zeppelin
 
 ### 설정 및 실행
-**환경설정**
+환경설정
 ```bash
 $ cat ~/.zshrc
 
@@ -20,5 +20,15 @@ export AIRFLOW_HOME=~/pj2/airflow
 export AIRFLOW__CORE__DAGS_FOLDER=~/pj2/airflow/dags
 export AIRFLOW__CORE__LOAD_EXAMPLES=False
 ```
+
+실행 - start kafka chatting program 
+```bash
+$ source .venv/bin/activate
+$ python src/chat/mj_app.py
+```
+
 ### dags 구조
 ![image](https://github.com/user-attachments/assets/1071c560-8b58-4b20-a28c-e140025ae233)
+
+### Related Git
+- [Kafka chatting program](https://github.com/mammamia5/chat)
