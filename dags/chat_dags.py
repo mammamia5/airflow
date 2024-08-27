@@ -15,6 +15,7 @@ from airflow.operators.python import (
         )
 
 import pandas as pd
+import os
 
 # Kafka 데이터를 처리하고 Parquet 파일로 저장하는 함수
 def save_kafka_to_parquet(ds_nodash):
@@ -26,7 +27,7 @@ def save_kafka_to_parquet(ds_nodash):
 
     # Kafka Consumer 설정
     consumer = KafkaConsumer(
-        'mammamia3',
+        'mammamia10',
         bootstrap_servers=["ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092"],
         auto_offset_reset="earliest",
         value_deserializer=lambda x: loads(x.decode('utf-8')),
@@ -39,11 +40,10 @@ def save_kafka_to_parquet(ds_nodash):
 
     if messages:
         df = pd.DataFrame(messages)
-        file_ = f"~/data/chat_data/{ds_nodash}.parquet"
+        file_path = f"/home/kimpass189/data/chat_data10/{ds_nodash}.parquet"
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        file_ = f"~/data/chat_data/{ds_nodash}.parquet"
-        df.to_parquet(file_name, index=False)
-        print(f"Parquet 파일로 저장 완료: {file_name}")
+        df.to_parquet(file_path, index=False)
+        print(f"Parquet 파일로 저장 완료: {file_path}")
         return True
     return True
 def air_alarm():
@@ -56,7 +56,7 @@ def air_alarm():
             'message': 'Airflow 작업이 완료되었습니다.',
             'time': datetime.today().strftime("%Y-%m-%d %H:%M:%S")
         }
-        producer.send('mammamia3', value=data)
+        producer.send('mammamia10', value=data)
         producer.flush()
         return True
 # Airflow DAG 정의
