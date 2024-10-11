@@ -30,5 +30,11 @@ $ python src/chat/mj_app.py
 ### dags 구조
 ![image](https://github.com/user-attachments/assets/1071c560-8b58-4b20-a28c-e140025ae233)
 
+### 결과 - timealarm
+![image](https://github.com/user-attachments/assets/b601a6cb-b4d2-4352-815a-85564a9fe3bc)
+
+### 결과 - chat_parquet
+![image](https://github.com/user-attachments/assets/1e92ca75-2254-48f7-9fb1-c99cfd8cdea9)
+
 ### Related Git
 - [Kafka chatting program](https://github.com/mammamia5/chat)
